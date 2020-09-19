@@ -94,6 +94,10 @@
           success: function (backData) {
             console.log(backData);
             if (backData.code == 200) {
+
+              /* 使用localStorage永久存储 token */
+              localStorage.setItem('token',backData.token);
+
               // alert('登录成功');
               /* bootstrap模态框
               (1)发现问题 ： 模态框看不见
