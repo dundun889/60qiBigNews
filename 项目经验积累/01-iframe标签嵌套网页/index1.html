@@ -9,9 +9,20 @@
         body{
             background-color: green;
         }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 过度动画 */
+            transition: all 1s cubic-bezier(0.38,-0.05, 0.71, 1.32);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
     </style>
 </head>
 <body>
-    
+    <div class="box"></div>
 </body>
 </html>

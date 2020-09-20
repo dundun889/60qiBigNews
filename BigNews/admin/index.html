@@ -95,6 +95,19 @@
                 localStorage.removeItem('token');
                 /* (2)跳转登录页 */
                 window.location.href = './login.html';
+            });
+
+            /* 3.侧边栏一级菜单 */
+            $('.level01').click(function(){
+                //1.排他思想修改样式
+                $(this).addClass('active').siblings().removeClass('active');
+                //2.如果是文章分类， 则需要下拉二级菜单
+                if( $(this).index() == 1){
+                    //二级菜单上下拉切换
+                    $('.level02').slideToggle();
+                    //右侧箭头旋转
+                    $(this).find('b').toggleClass('rotate0');
+                };
             })
         });
 
