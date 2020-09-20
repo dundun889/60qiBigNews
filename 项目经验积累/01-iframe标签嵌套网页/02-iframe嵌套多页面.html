@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        iframe{
+            display: block;
+            margin: 50px auto;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <!--iframe嵌套多网页 原理 ： a标签的target属性用法 
+        a标签target属性：打开链接方式
+            __self :  当前页打开
+            __blank : 新页面打开
+            framename : iframe标签的name属性值
+
+    iframe嵌套多页面流程
+        (1)给iframe标签一个name属性
+        (2)设置a标签的target属性为iframe的name属性值
+
+     -->
+
+    <a href="./index1.html" target="myframe">页面1</a>
+    <a href="./index2.html" target="myframe">页面2</a>
+    <a href="./index3.html" target="myframe">页面3</a>
+
+
+    <iframe src="./index1.html" frameborder="0" name="myframe"></iframe>
+</body>
+</html>
