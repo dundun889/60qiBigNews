@@ -17,12 +17,26 @@
             /* 过度动画 */
             transition: all 1s cubic-bezier(0.38,-0.05, 0.71, 1.32);
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 50;
+            top: 50;
         }
     </style>
 </head>
 <body>
+    <a href="./index3.html" id="btn" target="_blank">点我有惊喜</a>
     <div class="box"></div>
+
+    <script>
+        /* 注册事件 */
+        document.querySelector('#btn').onclick = function(){
+            this.style.border = '10px solid yellow';
+        };
+
+
+        /* 
+        dom.onclick()  :  等价于  $().click()  只能触发注册的事件
+        dom.click()  : 同时触发注册事件 + 默认点击事件
+        */
+    </script>
 </body>
 </html>
