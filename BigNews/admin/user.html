@@ -68,6 +68,74 @@
             </form>
         </div>
     </div>
+
+
+    <script src="./libs/http.js"></script>
+    <script>
+        //入口函数
+        $(function(){
+            /* 1.加载用户详细信息 */
+            $.ajax({
+                url:BigNew.user_detail,
+                type:'get',
+                dataType:'json',
+                success: function(backData){
+                    console.log(backData);
+                    $('.user_pic').attr('src',backData.data.userPic);
+
+                    for(let key in backData.data){
+                        // console.log( backData.data[key] );
+                        $('.' + key ).val(backData.data[key]);
+                    };
+
+                    // $('.username').val(backData.data.username);
+                    // $('.password').val(backData.data.password);
+                    // $('.nickname').val(backData.data.nickname);
+                    // $('.email').val(backData.data.email);
+                }
+            });
+
+            /* 2.文件预览 */
+            //1.给file表单元素注册onchange事件
+            $('#exampleInputFile').change(function () {
+                //1.2 获取用户选择的图片
+                let file = this.files[0];
+                //1.3 将文件转为src路径
+                let url = URL.createObjectURL(file);
+                //1.4 将url路径赋值给img标签的src
+                $('.user_pic').attr('src', url);
+            });
+
+            /* 3.文件提交 */
+            $('.btn-edit').on('click',function(e){
+                //禁用表单默认提交事件
+                e.preventDefault();
+                //创建FormData对象：参数是表单dom对象
+                let fd = new FormData($('form')[0]);
+                $.ajax({
+                    url:BigNew.user_edit,
+                    type:'post',
+                    dataType:'json',
+                    data:fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(backData){
+                        console.log(backData);
+                        if(backData.code == 200){
+                            alert('修改成功');
+                            //刷新首页
+                            /*注意点 
+                            window : 当前页面  user.html
+                            window.parent : 父页面 index.html
+                            */
+                            window.parent.location.reload();
+                        }
+                    }
+                });
+            });
+        })
+
+    </script>
 </body>
 
 </html>
